@@ -14,10 +14,10 @@ class CruizeController extends Controller
    */
   public function index(Request $request)
   {
-      //$cruizes = Cruize::orderBy('id','DESC')->paginate(5);
-      $cruizes = Cruize::All();
-      return view('cruize.index',compact('cruizes'));
-      //return view('cruize.index',compact('cruizes'))->with('i', ($request->input('page', 1) - 1) * 5);
+      $cruizes = Cruize::orderBy('id','DESC')->paginate(5);
+      //$cruizes = Cruize::All();
+      //return view('cruize.index',compact('cruizes'));
+      return view('cruize.index',compact('cruizes'))->with('i', ($request->input('page', 1) - 1) * 5);
   }
 
   /**
@@ -39,13 +39,14 @@ class CruizeController extends Controller
   public function store(Request $request)
   {
       $this->validate($request, [
-          'title' => 'required',
-          'description' => 'required',
+          'name' => 'required',
+          'ship_name' => 'required',
+          'from' => 'required',
+          'to' => 'required',
       ]);
 
       Cruize::create($request->all());
-      return redirect()->route('cruize.index')
-                      ->with('success','Cruize created successfully');
+      return redirect()->route('cruize.index')->with('success','Cruize created successfully');
   }
 
   /**
@@ -68,8 +69,8 @@ class CruizeController extends Controller
    */
   public function edit($id)
   {
-      $Cruize = Cruize::find($id);
-      return view('cruize.edit',compact('Cruize'));
+      $cruize = Cruize::find($id);
+      return view('cruize.edit',compact('cruize'));
   }
 
   /**
@@ -82,8 +83,10 @@ class CruizeController extends Controller
   public function update(Request $request, $id)
   {
       $this->validate($request, [
-          'title' => 'required',
-          'description' => 'required',
+          'name' => 'required',
+          'ship_name' => 'required',
+          'from' => 'required',
+          'to' => 'required',
       ]);
 
       Cruize::find($id)->update($request->all());
