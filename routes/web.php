@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::resource('itemCRUD', 'ItemCRUDController');
 
 Route::resource('cruize', 'CruizeController');
+
+Route::resource('excursion', 'ExcursionController');

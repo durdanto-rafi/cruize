@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit New Cruize</h2>
+                <h2>Edit Excursion</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('cruize.index') }}"> Back</a>
@@ -24,20 +24,13 @@
         </div>
     @endif
 
-    {!! Form::model($cruize, ['method' => 'PATCH','route' => ['cruize.update', $cruize->id]]) !!}
-    <div class="row">
+    {!! Form::model($excursion, ['method' => 'PATCH','route' => ['excursion.update', $excursion->id]]) !!}
+     <div class="row">
 
-       <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-            </div>
-        </div>
-
-       <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Ship Name:</strong>
-                {!! Form::text('ship_name', null, array('placeholder' => 'Ship Name','class' => 'form-control')) !!}
+                <strong>Title:</strong>
+                {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
             </div>
         </div>
 
@@ -55,11 +48,36 @@
             </div>
         </div>
 
-        
+         <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+                <strong>Time:</strong>
+                {!! Form::text('time', null, array('placeholder' => 'Time','class' => 'form-control')) !!}
+            </div>
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+                <strong>Price:</strong>
+                {!! Form::text('price', null, array('placeholder' => 'Price','class' => 'form-control')) !!}
+            </div>
+        </div>
+
+         <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+                <strong>Max no of guest:</strong>
+                {!! Form::text('max_number_of_guest', null, array('placeholder' => 'Max no of guest','class' => 'form-control')) !!}
+            </div>
+        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+
+         <script>
+            $(function() {
+            $( "#datepicker" ).datepicker();
+            });
+        </script>
 
     </div>
     {!! Form::close() !!}

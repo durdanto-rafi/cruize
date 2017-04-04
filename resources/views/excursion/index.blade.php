@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Cruize List</h2>
+                <h2>Excursion</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('cruize.create') }}"> Create New Cruize</a>
+                <a class="btn btn-success" href="{{ route('excursion.create') }}"> Create New excursion</a>
             </div>
         </div>
     </div>
@@ -22,19 +22,16 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Name</th>
+            <th>Title</th>
             <th width="400px">Action</th>
         </tr>
-    @foreach ($cruizes as $key => $cruize)
+    @foreach ($excursions as $key => $excursion)
     <tr>
-        <td>{{ $cruize->id }}</td>
-        <td>{{ $cruize->name }}</td>
+        <td>{{ $excursion->id }}</td>
+        <td>{{ $excursion->title }}</td>
         <td>
-            <a class="btn btn-info btn-sm" href="#">AC</a>
-            <a class="btn btn-primary btn-sm" href="{{ route('cruize.edit',$cruize->id) }}">Edit</a>
-            <a class="btn btn-primary btn-sm" href="{{ route('cruize.edit',$cruize->id) }}">Add Exc</a>
-            <a class="btn btn-primary btn-sm" href="{{ route('cruize.edit',$cruize->id) }}">Add Guest</a>
-            {!! Form::open(['method' => 'DELETE','route' => ['cruize.destroy', $cruize->id],'style'=>'display:inline']) !!}
+            <a class="btn btn-primary btn-sm" href="{{ route('excursion.edit',$excursion->id) }}">Edit</a>
+            {!! Form::open(['method' => 'DELETE','route' => ['excursion.destroy', $excursion->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
             {!! Form::close() !!}
         </td>
@@ -43,6 +40,6 @@
     </table>
 
     <!-- pagination -->
-    {!! $cruizes->render() !!} 
+    {!! $excursions->render() !!} 
 
 @endsection
