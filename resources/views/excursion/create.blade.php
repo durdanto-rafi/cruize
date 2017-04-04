@@ -29,7 +29,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Title:</strong>
+                <strong>{{$id}}:</strong>
                 {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
             </div>
         </div>
@@ -68,6 +68,8 @@
                 {!! Form::text('max_number_of_guest', null, array('placeholder' => 'Max no of guest','class' => 'form-control')) !!}
             </div>
         </div>
+
+        {!! Form::hidden('cruize_id', $id, array('class' => 'form-control')) !!}
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

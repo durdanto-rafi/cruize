@@ -44,30 +44,32 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>From:</strong>
-                {!! Form::text('from', '', array('placeholder' => 'From','class' => 'form-control')) !!}
+                {!! Form::text('from', '', array('class' => 'datepicker form-control', 'placeholder' => 'From')) !!}
             </div>
         </div>
 
          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>To:</strong>
-                {!! Form::text('to', '', array('id' => 'datepicker','placeholder' => 'To','class' => 'form-control')) !!}
+                {!! Form::text('to', '', array('class' => 'datepicker form-control','placeholder' => 'To')) !!}
             </div>
         </div>
-
-        
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
-         <script>
-            $(function() {
-            $( "#datepicker" ).datepicker();
-            });
-        </script>
-
     </div>
     {!! Form::close() !!}
 
 @endsection
+
+
+@section('script')
+    @parent
+    <script>
+        $(function() {
+        $( ".datepicker" ).datepicker();
+        });
+    </script>
+@stop

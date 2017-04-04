@@ -15,6 +15,7 @@ class CreateExcursionTable extends Migration
     {
         Schema::create('excursions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('cruize_id');
             $table->string('title');
             $table->date('from');
             $table->date('to');

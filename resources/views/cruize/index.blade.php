@@ -32,7 +32,7 @@
         <td>
             <a class="btn btn-info btn-sm" href="#">AC</a>
             <a class="btn btn-primary btn-sm" href="{{ route('cruize.edit',$cruize->id) }}">Edit</a>
-            <a class="btn btn-primary btn-sm" href="{{ route('cruize.edit',$cruize->id) }}">Add Exc</a>
+            <a class="btn btn-primary btn-sm" href="{{ route('excersion.add',$cruize->id) }}">Add Exc</a>
             <a class="btn btn-primary btn-sm" href="{{ route('cruize.edit',$cruize->id) }}">Add Guest</a>
             {!! Form::open(['method' => 'DELETE','route' => ['cruize.destroy', $cruize->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}

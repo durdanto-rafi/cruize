@@ -15,10 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
 Route::resource('itemCRUD', 'ItemCRUDController');
 
 Route::resource('cruize', 'CruizeController');
+Route::get('excersion/{id}/add', ['as'=> 'excersion.add', 'uses'=>'CruizeController@getExcersion']);
 
 Route::resource('excursion', 'ExcursionController');
+
 
 Route::resource('guest', 'GuestController');

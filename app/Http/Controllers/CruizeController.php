@@ -38,6 +38,7 @@ class CruizeController extends Controller
    */
   public function store(Request $request)
   {
+      
       $this->validate($request, [
           'name' => 'required',
           'ship_name' => 'required',
@@ -45,7 +46,15 @@ class CruizeController extends Controller
           'to' => 'required',
       ]);
 
-      Cruize::create($request->all());
+      $cruize = new Cruize;
+      $cruize->name = $request->get('name');
+      $cruize->ship_name = $request->get('ship_name');
+      $cruize->from = date('Y-m-d', strtotime($request->get('from')));
+      $cruize->to = date('Y-m-d', strtotime($request->get('to')));
+      $cruize->save();
+      
+
+
       return redirect()->route('cruize.index')->with('success','Cruize created successfully');
   }
 
@@ -110,5 +119,14 @@ class CruizeController extends Controller
   public function getCruizes(){
       $cruizes = Cruize::All();
       return response()->json(['cruizes' => $cruizes], 200);	
+  }
+
+
+  /*
+  * Excersion 
+  */
+
+  public function getExcersion($id){
+      return view('excursion.create', compact('id'));
   }
 }

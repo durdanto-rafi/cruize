@@ -15,8 +15,6 @@ class ExcursionController extends Controller
   public function index(Request $request)
   {
       $excursions = Excursion::orderBy('id','DESC')->paginate(5);
-      //$excursions = Cruize::All();
-      //return view('cruize.index',compact('excursions'));
       return view('excursion.index',compact('excursions'))->with('i', ($request->input('page', 1) - 1) * 5);
   }
 
@@ -38,6 +36,7 @@ class ExcursionController extends Controller
    */
   public function store(Request $request)
   {
+      //echo $request->get('cruize_id'); exit;
       $this->validate($request, [
           'title' => 'required',
           'from' => 'required',
@@ -45,6 +44,7 @@ class ExcursionController extends Controller
           'time' => 'required',
           'price' => 'required',
           'max_number_of_guest' => 'required',
+          'cruize_id' => 'required',
       ]);
 
       Excursion::create($request->all());
@@ -91,6 +91,7 @@ class ExcursionController extends Controller
           'time' => 'required',
           'price' => 'required',
           'max_number_of_guest' => 'required',
+          'cruize_id' => 'required',
       ]);
 
       Excursion::find($id)->update($request->all());
