@@ -40,6 +40,7 @@
                 {!! Form::text('last_name', null, array('placeholder' => 'Last Name','class' => 'form-control')) !!}
             </div>
         </div>
+        {!! Form::hidden('cruize_id', $id, array('class' => 'form-control')) !!}
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

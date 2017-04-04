@@ -125,8 +125,14 @@ class CruizeController extends Controller
   /*
   * Excersion 
   */
-
   public function getExcersion($id){
       return view('excursion.create', compact('id'));
+  }
+
+  /*
+  * Guest 
+  */
+  public function getGuest($id){
+      return view('guest.create', compact('id'));
   }
 }

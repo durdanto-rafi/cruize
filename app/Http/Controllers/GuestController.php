@@ -15,8 +15,6 @@ class GuestController extends Controller
   public function index(Request $request)
   {
       $guests = Guest::orderBy('id','DESC')->paginate(5);
-      //$guests = guest::All();
-      //return view('guest.index',compact('guests'));
       return view('guest.index',compact('guests'))->with('i', ($request->input('page', 1) - 1) * 5);
   }
 
@@ -41,6 +39,7 @@ class GuestController extends Controller
       $this->validate($request, [
           'first_name' => 'required',
           'last_name' => 'required',
+          'cruize_id' => 'required',
       ]);
 
       Guest::create($request->all());
@@ -83,6 +82,7 @@ class GuestController extends Controller
       $this->validate($request, [
           'first_name' => 'required',
           'last_name' => 'required',
+          'cruize_id' => 'required',
       ]);
 
       Guest::find($id)->update($request->all());
