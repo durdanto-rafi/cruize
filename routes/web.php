@@ -20,3 +20,5 @@ Route::resource('itemCRUD', 'ItemCRUDController');
 Route::resource('cruize', 'CruizeController');
 
 Route::resource('excursion', 'ExcursionController');
+
+Route::resource('guest', 'GuestController');

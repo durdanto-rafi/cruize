@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Excursion</h2>
+                <h2>Guest</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('excursion.create') }}"> Create New excursion</a>
+                <a class="btn btn-success" href="{{ route('guest.create') }}"> Create New Guest</a>
             </div>
         </div>
     </div>
@@ -22,16 +22,16 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Title</th>
+            <th>Name</th>
             <th width="400px">Action</th>
         </tr>
-    @foreach ($excursions as $key => $excursion)
+    @foreach ($guests as $key => $guest)
     <tr>
-        <td>{{ $excursion->id }}</td>
-        <td>{{ $excursion->title }}</td>
+        <td>{{ $guest->id }}</td>
+        <td>{{ $guest->first_name }}</td>
         <td>
-            <a class="btn btn-primary btn-sm" href="{{ route('excursion.edit',$excursion->id) }}">Edit</a>
-            {!! Form::open(['method' => 'DELETE','route' => ['excursion.destroy', $excursion->id],'style'=>'display:inline']) !!}
+            <a class="btn btn-primary btn-sm" href="{{ route('guest.edit',$guest->id) }}">Edit</a>
+            {!! Form::open(['method' => 'DELETE','route' => ['guest.destroy', $guest->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
             {!! Form::close() !!}
         </td>
@@ -40,6 +40,6 @@
     </table>
 
     <!-- pagination -->
-    {!! $excursions->render() !!} 
+    {!! $guests->render() !!} 
 
 @endsection

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cruize extends Model
 {
-    public $fillable = ['name', 'ship_name'];
+    public $fillable = ['name', 'ship_name', 'from', 'to'];
 }
