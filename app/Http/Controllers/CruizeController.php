@@ -106,4 +106,9 @@ class CruizeController extends Controller
       return redirect()->route('cruize.index')
                       ->with('success','Cruize deleted successfully');
   }
+
+  public function getCruizes(){
+      $cruizes = Cruize::All();
+      return response()->json(['cruizes' => $cruizes], 200);	
+  }
 }
