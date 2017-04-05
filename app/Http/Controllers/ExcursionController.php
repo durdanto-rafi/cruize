@@ -47,7 +47,16 @@ class ExcursionController extends Controller
           'cruize_id' => 'required',
       ]);
 
-      Excursion::create($request->all());
+      $excursion = new Excursion;
+      $excursion->title = $request->get('title');
+      $excursion->cruize_id = $request->get('cruize_id');
+      $excursion->from = date('Y-m-d', strtotime($request->get('from')));
+      $excursion->to = date('Y-m-d', strtotime($request->get('to')));
+      $excursion->time = $request->get('time');
+      $excursion->price = $request->get('price');
+      $excursion->max_number_of_guest = $request->get('max_number_of_guest');
+      $excursion->save();
+
       return redirect()->route('excursion.index')->with('success','Excuision created successfully');
   }
 

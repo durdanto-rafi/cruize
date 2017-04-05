@@ -38,7 +38,6 @@ class CruizeController extends Controller
    */
   public function store(Request $request)
   {
-      
       $this->validate($request, [
           'name' => 'required',
           'ship_name' => 'required',
@@ -53,8 +52,6 @@ class CruizeController extends Controller
       $cruize->to = date('Y-m-d', strtotime($request->get('to')));
       $cruize->save();
       
-
-
       return redirect()->route('cruize.index')->with('success','Cruize created successfully');
   }
 

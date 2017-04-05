@@ -1,17 +1,6 @@
 @extends('layouts.app')
-
+@section('title', 'Editing existing Guest')
 @section('content')
-
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Guest</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('cruize.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -44,12 +33,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-
-         <script>
-            $(function() {
-            $( "#datepicker" ).datepicker();
-            });
-        </script>
+        {!! Form::hidden('cruize_id', null, array('class' => 'form-control')) !!}
 
     </div>
     {!! Form::close() !!}

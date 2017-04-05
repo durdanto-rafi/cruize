@@ -1,17 +1,6 @@
 @extends('layouts.app')
-
+@section('title', 'Guests')
 @section('content')
-
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Guest</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('guest.create') }}"> Create New Guest</a>
-            </div>
-        </div>
-    </div>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

@@ -1,17 +1,6 @@
 @extends('layouts.app')
-
+@section('title', 'Create New Excursion')
 @section('content')
-
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Create New Excursion</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('excursion.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -29,7 +18,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>{{$id}}:</strong>
+                <strong>Title:</strong>
                 {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
             </div>
         </div>
@@ -37,14 +26,14 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>From:</strong>
-                {!! Form::text('from', '', array('placeholder' => 'From','class' => 'form-control')) !!}
+                {!! Form::text('from', '', array('class' => 'datepicker form-control', 'placeholder' => 'From')) !!}
             </div>
         </div>
 
          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <strong>To:</strong>
-                {!! Form::text('to', '', array('id' => 'datepicker','placeholder' => 'To','class' => 'form-control')) !!}
+                {!! Form::text('to', '', array('class' => 'datepicker form-control','placeholder' => 'To')) !!}
             </div>
         </div>
 
@@ -68,7 +57,7 @@
                 {!! Form::text('max_number_of_guest', null, array('placeholder' => 'Max no of guest','class' => 'form-control')) !!}
             </div>
         </div>
-
+        
         {!! Form::hidden('cruize_id', $id, array('class' => 'form-control')) !!}
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -85,3 +74,12 @@
     {!! Form::close() !!}
 
 @endsection
+
+@section('script')
+    @parent
+    <script>
+        $(function() {
+        $( ".datepicker" ).datepicker();
+        });
+    </script>
+@stop
