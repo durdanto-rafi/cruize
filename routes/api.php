@@ -22,6 +22,30 @@ Route::get('/cruizes',[
 	'uses' => 'CruizeController@getCruizes'
 ]);
 
+Route::post('/cruize',[
+	'uses' => 'CruizeController@postCruize'
+]);
+
 Route::post('/cabin',[
 	'uses' => 'CabinController@postCabin'
+]);
+
+Route::get('/cabins',[
+	'uses' => 'CabinController@getCabins'
+]);
+
+Route::post('/excursion',[
+	'uses' => 'ExcursionController@postExcursion'
+]);
+
+Route::get('/excursions',[
+	'uses' => 'ExcursionController@getExcursions'
+]);
+
+Route::post('/guest',[
+	'uses' => 'GuestController@postGuest'
+]);
+
+Route::get('/guests',[
+	'uses' => 'GuestController@getGuests'
 ]);

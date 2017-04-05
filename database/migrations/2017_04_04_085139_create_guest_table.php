@@ -18,6 +18,7 @@ class CreateGuestTable extends Migration
             $table->integer('cruize_id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('uniq_id', 20)->unique();
             $table->timestamps();
         });
     }

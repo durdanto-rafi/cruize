@@ -43,6 +43,7 @@ class CabinController extends Controller
           'ship_name' => 'required',
           'from' => 'required',
           'to' => 'required',
+          'uniq_id' => 'required',
       ]);
 
       $cabin = new Cabin;
@@ -50,6 +51,7 @@ class CabinController extends Controller
       $cabin->ship_name = $request->get('ship_name');
       $cabin->from = date('Y-m-d', strtotime($request->get('from')));
       $cabin->to = date('Y-m-d', strtotime($request->get('to')));
+      $cabin->uniq_id = $request->get('uniq_id');
       $cabin->save();
       
       return redirect()->route('cabin.index')->with('success','cabin created successfully');
@@ -113,19 +115,30 @@ class CabinController extends Controller
                       ->with('success','cabin deleted successfully');
   }
 
+  /**
+   * Display a listing of the resource as JSON.
+   *
+   * @return json
+   */
   public function getcabins(){
       $cabins = Cabin::All();
       return response()->json(['cabins' => $cabins], 200);	
   }
 
 
+  /**
+   * Store a newly created resource in storage from API.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
   public function postCabin(Request $request){
       $cabin = new Cabin();
       $cabin->cabin_number = $request->input('cabin_number');
       $cabin->guest_id = $request->input('guest_id');
       $cabin->number_of_guest = $request->input('number_of_guest');
       $cabin->payment_status = $request->input('payment_status');
-      $cabin->device_date = $request->input('device_date');
+      $cabin->uniq_id = $request->input('uniq_id');
       $cabin->save();
 
       return response()->json(['cabin' => $cabin], 201);

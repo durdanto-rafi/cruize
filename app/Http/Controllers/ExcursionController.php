@@ -39,12 +39,13 @@ class ExcursionController extends Controller
       //echo $request->get('cruize_id'); exit;
       $this->validate($request, [
           'title' => 'required',
-          'from' => 'required',
-          'to' => 'required',
+          'from' => 'required|date',
+          'to' => 'required|date',
           'time' => 'required',
-          'price' => 'required',
-          'max_number_of_guest' => 'required',
+          'price' => 'required|numeric',
+          'max_number_of_guest' => 'required|integer',
           'cruize_id' => 'required',
+          'uniq_id' => 'required',
       ]);
 
       $excursion = new Excursion;
@@ -55,6 +56,7 @@ class ExcursionController extends Controller
       $excursion->time = $request->get('time');
       $excursion->price = $request->get('price');
       $excursion->max_number_of_guest = $request->get('max_number_of_guest');
+      $excursion->uniq_id = $request->get('uniq_id');
       $excursion->save();
 
       return redirect()->route('excursion.index')->with('success','Excuision created successfully');
@@ -101,6 +103,8 @@ class ExcursionController extends Controller
           'price' => 'required',
           'max_number_of_guest' => 'required',
           'cruize_id' => 'required',
+          'uniq_id' => 'required',
+          
       ]);
 
       Excursion::find($id)->update($request->all());
@@ -117,5 +121,16 @@ class ExcursionController extends Controller
   {
       Excursion::find($id)->delete();
       return redirect()->route('excursion.index')->with('success','Excuision deleted successfully');
+  }
+
+  /**
+   * Display a listing of the resource as JSON.
+   *
+   * @return json
+   */
+  public function getExcursions()
+  {
+      $excursion = Excursion::All();
+      return response()->json(['excursions' => $excursions], 200);	
   }
 }

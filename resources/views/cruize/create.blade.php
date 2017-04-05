@@ -43,7 +43,7 @@
                 {!! Form::text('to', '', array('class' => 'datepicker form-control','placeholder' => 'To')) !!}
             </div>
         </div>
-
+        {!! Form::hidden('uniq_id', round(microtime(true) * 1000)) !!}
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>

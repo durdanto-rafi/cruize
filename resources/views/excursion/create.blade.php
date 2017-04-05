@@ -58,7 +58,8 @@
             </div>
         </div>
         
-        {!! Form::hidden('cruize_id', $id, array('class' => 'form-control')) !!}
+        {!! Form::hidden('cruize_id', $id) !!}
+        {!! Form::hidden('uniq_id', round(microtime(true) * 1000)) !!}
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

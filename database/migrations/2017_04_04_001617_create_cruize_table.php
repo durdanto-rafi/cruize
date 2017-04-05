@@ -19,6 +19,7 @@ class CreateCruizeTable extends Migration
             $table->string('ship_name');
             $table->date('from');
             $table->date('to');
+            $table->string('uniq_id', 20)->unique();
             $table->timestamps();
         });
     }

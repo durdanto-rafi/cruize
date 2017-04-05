@@ -19,7 +19,7 @@ class CreateCabinTable extends Migration
             $table->integer('guest_id');
             $table->integer('number_of_guest');
             $table->integer('payment_status');
-            $table->datetime('device_date');
+            $table->string('uniq_id', 20)->unique();
             $table->timestamps();
         });
     }

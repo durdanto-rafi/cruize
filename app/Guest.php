@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guest extends Model
 {
-    public $fillable = ['cruize_id','first_name','last_name'];
+    public $fillable = ['cruize_id', 'first_name', 'last_name', 'uniq_id'];
 }

@@ -22,6 +22,7 @@ class CreateExcursionTable extends Migration
             $table->time('time');
             $table->decimal('price', 5, 2);
             $table->integer('max_number_of_guest');
+            $table->string('uniq_id', 20)->unique();
             $table->timestamps();
         });
     }

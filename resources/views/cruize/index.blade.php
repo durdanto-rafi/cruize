@@ -36,6 +36,7 @@
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 {!! $cruizes->render() !!} 
+                
             </div>
             <div class="pull-right span7 text-center">
                 <a class="btn btn-success" href="#"> Search</a>

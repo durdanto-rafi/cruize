@@ -50,6 +50,7 @@ class CruizeController extends Controller
       $cruize->ship_name = $request->get('ship_name');
       $cruize->from = date('Y-m-d', strtotime($request->get('from')));
       $cruize->to = date('Y-m-d', strtotime($request->get('to')));
+      $cruize->uniq_id = $request->get('uniq_id');
       $cruize->save();
       
       return redirect()->route('cruize.index')->with('success','Cruize created successfully');
@@ -95,7 +96,14 @@ class CruizeController extends Controller
           'to' => 'required',
       ]);
 
-      Cruize::find($id)->update($request->all());
+      $cruize = new Cruize;
+      $cruize->name = $request->get('name');
+      $cruize->ship_name = $request->get('ship_name');
+      $cruize->from = date('Y-m-d', strtotime($request->get('from')));
+      $cruize->to = date('Y-m-d', strtotime($request->get('to')));
+      $cruize->uniq_id = $request->get('uniq_id');
+
+      Cruize::find($id)->update($cruize);
       return redirect()->route('cruize.index')
                       ->with('success','Cruize updated successfully');
   }
@@ -113,7 +121,13 @@ class CruizeController extends Controller
                       ->with('success','Cruize deleted successfully');
   }
 
-  public function getCruizes(){
+  /**
+   * Display a listing of the resource as JSON.
+   *
+   * @return json
+   */
+  public function getCruizes()
+  {
       $cruizes = Cruize::All();
       return response()->json(['cruizes' => $cruizes], 200);	
   }
@@ -122,14 +136,16 @@ class CruizeController extends Controller
   /*
   * Excersion 
   */
-  public function getExcersion($id){
+  public function getExcersion($id)
+  {
       return view('excursion.create', compact('id'));
   }
 
   /*
   * Guest 
   */
-  public function getGuest($id){
+  public function getGuest($id)
+  {
       return view('guest.create', compact('id'));
   }
 }

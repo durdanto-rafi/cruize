@@ -40,14 +40,14 @@
          <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
                 <strong>Time:</strong>
-                {!! Form::text('time', null, array('placeholder' => 'Time','class' => 'form-control')) !!}
+                {!! Form::text('time', null, array('placeholder' => '00:00','class' => 'form-control')) !!}
             </div>
         </div>
 
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
                 <strong>Price:</strong>
-                {!! Form::text('price', null, array('placeholder' => 'Price','class' => 'form-control')) !!}
+                {!! Form::text('price', null, array('placeholder' => '0.00','class' => 'form-control')) !!}
             </div>
         </div>
 

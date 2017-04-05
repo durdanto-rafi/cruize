@@ -40,6 +40,7 @@ class GuestController extends Controller
           'first_name' => 'required',
           'last_name' => 'required',
           'cruize_id' => 'required',
+          'uniq_id' => 'required',
       ]);
 
       Guest::create($request->all());
@@ -83,6 +84,7 @@ class GuestController extends Controller
           'first_name' => 'required',
           'last_name' => 'required',
           'cruize_id' => 'required',
+          'uniq_id' => 'required',
       ]);
 
       Guest::find($id)->update($request->all());
@@ -99,5 +101,16 @@ class GuestController extends Controller
   {
       Guest::find($id)->delete();
       return redirect()->route('guest.index')->with('success','Guest deleted successfully');
+  }
+
+  /**
+   * Display a listing of the resource as JSON.
+   *
+   * @return json
+   */
+  public function getGuests()
+  {
+      $guest = Guest::All();
+      return response()->json(['guest' => $guest], 200);	
   }
 }
