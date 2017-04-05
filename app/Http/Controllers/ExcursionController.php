@@ -130,7 +130,7 @@ class ExcursionController extends Controller
    */
   public function getExcursions()
   {
-      $excursion = Excursion::All();
+      $excursions = Excursion::All();
       return response()->json(['excursions' => $excursions], 200);	
   }
 }
