@@ -25,5 +25,4 @@ Route::get('guest/{id}/add', ['as'=> 'guest.add', 'uses'=>'CruizeController@getG
 
 Route::resource('excursion', 'ExcursionController');
 
-
 Route::resource('guest', 'GuestController');

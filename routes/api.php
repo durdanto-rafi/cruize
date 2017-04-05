@@ -21,3 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/cruizes',[
 	'uses' => 'CruizeController@getCruizes'
 ]);
+
+Route::post('/cabin',[
+	'uses' => 'CabinController@postCabin'
+]);
