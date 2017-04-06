@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cruize;
+use Excel;
 
 class CruizeController extends Controller
 {
@@ -155,7 +156,8 @@ class CruizeController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function postCruize(Request $request){
+  public function postCruize(Request $request)
+  {
       $cruize = new Cruize;
       $cruize->name = $request->get('name');
       $cruize->ship_name = $request->get('ship_name');
@@ -166,4 +168,84 @@ class CruizeController extends Controller
 
       return response()->json(['cruize' => $cruize], 201);
   }
+
+  /**
+   * Store a newly created resource in storage from API.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function postCruizes(Request $request)
+  {
+    $jsonData = $request->json()->all();
+    $cruize = new Cruize;
+    $data = [];
+    foreach ($jsonData['cruizes'] as $cruize){
+        $data[] = array(
+          'name' => $cruize['name'],    
+          'ship_name' => $cruize['ship_name'],  
+          'from' => $cruize['from'],
+          'to' => $cruize['to'],
+          'uniq_id' => $cruize['uniq_id']
+        );
+    };
+
+    Cruize::insert($data); 
+    return response()->json($data, 200, array(), JSON_PRETTY_PRINT);
+    //return response()->json($data, 200, array(), JSON_PRETTY_PRINT);
+  }
+
+  /**
+  * Return View file
+  *
+  * @var array
+  */
+	public function importExport()
+	{
+		  return view('importExport');
+	}
+
+	/**
+  * File Export Code
+  *
+  * @var array
+  */
+	public function downloadExcel(Request $request, $type)
+	{
+      $data = Item::get()->toArray();
+      return Excel::create('itsolutionstuff_example', function($excel) use ($data) {
+        $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+              $sheet->fromArray($data);
+            });
+      })->download($type);
+	}
+
+	/**
+  * Import file into database Code
+  *
+  * @var array
+  */
+	public function importExcel(Request $request)
+	{
+      if($request->hasFile('import_file')){
+          $path = $request->file('import_file')->getRealPath();
+          $data = Excel::load($path, function($reader) {})->get();
+          if(!empty($data) && $data->count()){
+            foreach ($data->toArray() as $key => $value) {
+                if(!empty($value)){
+                    foreach ($value as $v) {		
+                        $insert[] = ['title' => $v['title'], 'description' => $v['description']];
+                    }
+                }
+            }
+
+            if(!empty($insert)){
+                echo $insert; exit;
+                return back()->with('success','Insert Record successfully.');
+            }
+          }
+      }
+      return back()->with('error','Please Check your file, Something is wrong there.');
+	}
 }

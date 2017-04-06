@@ -26,6 +26,10 @@ Route::post('/cruize',[
 	'uses' => 'CruizeController@postCruize'
 ]);
 
+Route::post('/cruizes',[
+	'uses' => 'CruizeController@postCruizes'
+]);
+
 Route::post('/cabin',[
 	'uses' => 'CabinController@postCabin'
 ]);

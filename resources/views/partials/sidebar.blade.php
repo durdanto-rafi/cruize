@@ -36,15 +36,6 @@
                 </span>
               </a>
             </li>
-            <!--<li class="{{ Request::is('cruize') ? 'active' : '' }}">
-                <a href="{{ route('cruize.index') }}"><i class="fa fa-circle-o"></i> Cruize</a>
-            </li>
-            <li class="{{ Request::is('excursion') ? 'active' : '' }}">
-                <a href="{{ route('excursion.index') }}"><i class="fa fa-circle-o"></i> Excursion</a>
-            </li>
-            <li class="{{ Request::is('guest') ? 'active' : '' }}">
-                <a href="{{ route('guest.index') }}"><i class="fa fa-circle-o"></i> Guest</a>
-            </li>-->
         </ul>
     </section>
     <!-- /.sidebar -->
