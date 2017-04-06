@@ -15,7 +15,28 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="{{ Request::is('cruize') ? 'active' : '' }}">
+            <li class="treeview {{ Request::is('cruize') ? 'active' : '' }}">
+              <a href="{{ route('cruize.index') }}">
+                <i i class="fa fa-suitcase"></i> <span>Cruize</span>
+                <span class="pull-right-container">
+                </span>
+              </a>
+            </li>
+            <li class="treeview {{ Request::is('excursion') ? 'active' : '' }}">
+              <a href="{{ route('excursion.index') }}">
+                <i class="fa fa-external-link-square"></i> <span>Excursion</span>
+                <span class="pull-right-container">
+                </span>
+              </a>
+            </li>
+            <li class="treeview {{ Request::is('guest') ? 'active' : '' }}">
+              <a href="{{ route('guest.index') }}">
+                <i class="fa fa-users"></i> <span>Guest</span>
+                <span class="pull-right-container">
+                </span>
+              </a>
+            </li>
+            <!--<li class="{{ Request::is('cruize') ? 'active' : '' }}">
                 <a href="{{ route('cruize.index') }}"><i class="fa fa-circle-o"></i> Cruize</a>
             </li>
             <li class="{{ Request::is('excursion') ? 'active' : '' }}">
@@ -23,7 +44,7 @@
             </li>
             <li class="{{ Request::is('guest') ? 'active' : '' }}">
                 <a href="{{ route('guest.index') }}"><i class="fa fa-circle-o"></i> Guest</a>
-            </li>
+            </li>-->
         </ul>
     </section>
     <!-- /.sidebar -->

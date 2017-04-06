@@ -133,4 +133,37 @@ class ExcursionController extends Controller
       $excursions = Excursion::All();
       return response()->json(['excursions' => $excursions], 200);	
   }
+
+  /**
+   * Store a newly created resource in storage from API.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function postExcursion(Request $request){
+      //echo $request->get('cruize_id'); exit;
+      $this->validate($request, [
+          'title' => 'required',
+          'from' => 'required|date',
+          'to' => 'required|date',
+          'time' => 'required',
+          'price' => 'required|numeric',
+          'max_number_of_guest' => 'required|integer',
+          'cruize_id' => 'required',
+          'uniq_id' => 'required',
+      ]);
+
+      $excursion = new Excursion;
+      $excursion->title = $request->get('title');
+      $excursion->cruize_id = $request->get('cruize_id');
+      $excursion->from = date('Y-m-d', strtotime($request->get('from')));
+      $excursion->to = date('Y-m-d', strtotime($request->get('to')));
+      $excursion->time = $request->get('time');
+      $excursion->price = $request->get('price');
+      $excursion->max_number_of_guest = $request->get('max_number_of_guest');
+      $excursion->uniq_id = $request->get('uniq_id');
+      $excursion->save();
+
+      return response()->json(['excursion' => $excursion], 201);
+  }
 }

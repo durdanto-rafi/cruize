@@ -13,12 +13,6 @@
 
 Route::resource('/', 'CruizeController');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
-Route::resource('itemCRUD', 'ItemCRUDController');
-
 Route::resource('cruize', 'CruizeController');
 Route::get('excersion/{id}/add', ['as'=> 'excersion.add', 'uses'=>'CruizeController@getExcersion']);
 Route::get('guest/{id}/add', ['as'=> 'guest.add', 'uses'=>'CruizeController@getGuest']);

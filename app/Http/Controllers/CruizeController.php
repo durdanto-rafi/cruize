@@ -148,4 +148,22 @@ class CruizeController extends Controller
   {
       return view('guest.create', compact('id'));
   }
+
+  /**
+   * Store a newly created resource in storage from API.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function postCruize(Request $request){
+      $cruize = new Cruize;
+      $cruize->name = $request->get('name');
+      $cruize->ship_name = $request->get('ship_name');
+      $cruize->from = date('Y-m-d', strtotime($request->get('from')));
+      $cruize->to = date('Y-m-d', strtotime($request->get('to')));
+      $cruize->uniq_id = $request->get('uniq_id');
+      $cruize->save();
+
+      return response()->json(['cruize' => $cruize], 201);
+  }
 }
