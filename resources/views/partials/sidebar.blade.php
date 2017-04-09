@@ -16,25 +16,25 @@
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview {{ Request::is('cruize') ? 'active' : '' }}">
-              <a href="{{ route('cruize.index') }}">
-                <i i class="fa fa-suitcase"></i> <span>Cruize</span>
-                <span class="pull-right-container">
+                <a href="{{ route('cruize.index') }}">
+                    <i i class="fa fa-suitcase"></i> <span>Cruize</span>
+                    <span class="pull-right-container">
                 </span>
-              </a>
+                </a>
             </li>
             <li class="treeview {{ Request::is('excursion') ? 'active' : '' }}">
-              <a href="{{ route('excursion.index') }}">
-                <i class="fa fa-external-link-square"></i> <span>Excursion</span>
-                <span class="pull-right-container">
+                <a href="{{ route('excursion.index') }}">
+                    <i class="fa fa-external-link-square"></i> <span>Excursion</span>
+                    <span class="pull-right-container">
                 </span>
-              </a>
+                </a>
             </li>
             <li class="treeview {{ Request::is('guest') ? 'active' : '' }}">
-              <a href="{{ route('guest.index') }}">
-                <i class="fa fa-users"></i> <span>Guest</span>
-                <span class="pull-right-container">
+                <a href="{{ route('guest.index') }}">
+                    <i class="fa fa-users"></i> <span>Guest</span>
+                    <span class="pull-right-container">
                 </span>
-              </a>
+                </a>
             </li>
         </ul>
     </section>
